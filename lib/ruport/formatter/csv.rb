@@ -15,15 +15,15 @@ module Ruport
 
   # This formatter implements the CSV format for Ruport's Row, Table, Group
   # and Grouping controllers.  It is a light wrapper around
-  # James Edward Gray II's FasterCSV.
+  # James Edward Gray II's CSV.
   #
   # === Rendering Options
   #                                                     
   # <tt>:style</tt> Used for grouping (:inline,:justified,:raw)      
   #
-  # <tt>:format_options</tt> A hash of FasterCSV options  
+  # <tt>:format_options</tt> A hash of CSV options  
   #
-  # <tt>:formatter</tt> An existing FasterCSV object to write to
+  # <tt>:formatter</tt> An existing CSV object to write to
   #
   # <tt>:show_table_headers</tt> True by default
   #
@@ -33,10 +33,6 @@ module Ruport
     
     renders :csv, :for => [ Controller::Row,   Controller::Table, 
                             Controller::Group, Controller::Grouping ]
-    
-    def initialize
-      require "fastercsv" unless RUBY_VERSION > "1.9"   
-    end
 
     attr_writer :csv_writer
 
